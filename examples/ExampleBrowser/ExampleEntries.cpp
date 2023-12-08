@@ -12,6 +12,8 @@
 #include "../SharedMemory/GraphicsClientExample.h"
 
 #include "../ForkLift/ForkLiftDemo.h"
+#include "../TestVehicle/TestVehicleDemo.h"
+#include "../CarHandling/CarHandlingDemo.h"
 #include "../MultiThreadedDemo/MultiThreadedDemo.h"
 #include "../BasicDemo/BasicExample.h"
 #include "../Planar2D/Planar2D.h"
@@ -140,7 +142,7 @@ static ExampleEntry gDefaultExamples[] =
 		ExampleEntry(1, "Basic Example", "Create some rigid bodies using box collision shapes. This is a good example to familiarize with the basic initialization of Bullet. The Basic Example can also be compiled without graphical user interface, as a console application. Press W for wireframe, A to show AABBs, I to suspend/restart physics simulation. Press D to toggle auto-deactivation of the simulation. ", BasicExampleCreateFunc),
 
 		ExampleEntry(1, "Rolling Friction", "Damping is often not good enough to keep rounded objects from rolling down a sloped surface. Instead, you can set the rolling friction of a rigid body. Generally it is best to leave the rolling friction to zero, to avoid artifacts.", RollingFrictionCreateFunc),
-        
+
 		ExampleEntry(1, "Constraints", "Show the use of the various constraints in Bullet. Press the L key to visualize the constraint limits. Press the C key to visualize the constraint frames.",
 					 AllConstraintCreateFunc),
 
@@ -180,7 +182,7 @@ static ExampleEntry gDefaultExamples[] =
 					 PhysicsServerCreateFuncBullet2, PHYSICS_SERVER_REPLAY_FROM_COMMAND_LOG),
 		ExampleEntry(1, "Graphics Server", "Create a graphics server.",GraphicsServerCreateFuncBullet),
 		ExampleEntry(1, "Graphics Client", "Create a graphics client.", GraphicsClientCreateFunc),
-		
+
 					 //
 		//	ExampleEntry(1, "Physics Client (Direct)", "Create a physics client that can communicate with a physics server directly in-process.", PhysicsClientCreateFunc,eCLIENTEXAMPLE_DIRECT),
 
@@ -225,7 +227,7 @@ static ExampleEntry gDefaultExamples[] =
         ExampleEntry(1, "Multibody Cloth Anchor", "Deformable Multibody Anchor test", MultibodyClothAnchorCreateFunc),
         ExampleEntry(1, "Deformable-MultiBody Contact", "MultiBody and Deformable contact", DeformableMultibodyCreateFunc),
         // ExampleEntry(1, "MultiBody Baseline", "MultiBody Baseline", MultiBodyBaselineCreateFunc),
-		
+
 		ExampleEntry(0, "Reduced Deformabe Body"),
 		ExampleEntry(1, "Mode Visualizer", "Visualizer the modes for reduced deformable objects", ReducedModeVisualizerCreateFunc),
 		ExampleEntry(1, "Reduced Conservation Test", "Momentum conservation test for the reduced deformable objects", ReducedConservationTestCreateFunc),
@@ -237,7 +239,7 @@ static ExampleEntry gDefaultExamples[] =
 		ExampleEntry(1, "Reduced Friction Slope", "Grasp a reduced deformable block", FrictionSlopeCreateFunc),
 		ExampleEntry(1, "Reduced Benchmark", "Reduced deformable performance benchmark example", ReducedBenchmarkCreateFunc),
 		// ExampleEntry(1, "Simple Reduced Deformable Test", "Simple dynamics test for the reduced deformable objects", ReducedBasicTestCreateFunc),
-        
+
 #ifdef INCLUDE_CLOTH_DEMOS
 		ExampleEntry(0, "Soft Body"),
 		ExampleEntry(1, "Cloth", "Simulate a patch of cloth.", SoftDemoCreateFunc, 0),
@@ -312,11 +314,15 @@ static ExampleEntry gDefaultExamples[] =
 
 		ExampleEntry(0, "Vehicles"),
 		ExampleEntry(1, "Hinge2 Vehicle", "A rigid body chassis with 4 rigid body wheels attached by a btHinge2Constraint", Hinge2VehicleCreateFunc),
+		ExampleEntry(1, "Car Handling", "Simulate a sports car handling", CarHandlingCreateFunc),
 		ExampleEntry(1, "ForkLift",
 					 "Simulate a fork lift vehicle with a working fork lift that can be moved using the cursor keys. The wheels collision is simplified using ray tests."
 					 "There are currently some issues with the wheel rendering, the wheels rotate when picking up the object."
 					 "The demo implementation allows to choose various MLCP constraint solvers.",
 					 ForkLiftCreateFunc),
+		ExampleEntry(1, "TestVehicle",
+					 "Simple vehicle test",
+					 TestVehicleCreateFunc),
 
 		ExampleEntry(0, "Raycast"),
 		ExampleEntry(1, "Raytest", "Cast rays using the btCollisionWorld::rayTest method. The example shows how to receive the hit position and normal along the ray against the first object. Also it shows how to receive all the hits along a ray.", RaytestCreateFunc),

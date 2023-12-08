@@ -4,8 +4,8 @@ Copyright (c) 2003-2006 Erwin Coumans  https://bulletphysics.org
 
 This software is provided 'as-is', without any express or implied warranty.
 In no event will the authors be held liable for any damages arising from the use of this software.
-Permission is granted to anyone to use this software for any purpose, 
-including commercial applications, and to alter it and redistribute it freely, 
+Permission is granted to anyone to use this software for any purpose,
+including commercial applications, and to alter it and redistribute it freely,
 subject to the following restrictions:
 
 1. The origin of this software must not be misrepresented; you must not claim that you wrote the original software. If you use this software in a product, an acknowledgment in the product documentation would be appreciated but is not required.
@@ -203,8 +203,8 @@ float wheelRadius = 0.5f;
 float wheelWidth = 0.4f;
 float wheelFriction = 1000;  //BT_LARGE_FLOAT;
 float suspensionStiffness = 20.f;
-float suspensionDamping = 2.3f;
-float suspensionCompression = 4.4f;
+float suspensionDamping = 0.1f;
+float suspensionCompression = 0.1f;
 float rollInfluence = 0.1f;  //1.0f;
 
 btScalar suspensionRestLength(0.6);
@@ -589,7 +589,7 @@ void ForkLiftDemo::renderScene()
 		glDisable(GL_LIGHTING);
 		glColor3f(0, 0, 0);
 		char buf[124];
-		
+
 		sprintf(buf,"SHIFT+Cursor Left/Right - rotate lift");
 		GLDebugDrawString(xStart,20,buf);
 		yStart+=20;
@@ -951,20 +951,20 @@ void ForkLiftDemo::specialKeyboard(int key, int x, int y)
 
 	int state;
 	state=glutGetModifiers();
-	if (state & GLUT_ACTIVE_SHIFT) 
+	if (state & GLUT_ACTIVE_SHIFT)
 	{
-		switch (key) 
+		switch (key)
 			{
-			case GLUT_KEY_LEFT : 
+			case GLUT_KEY_LEFT :
 				{
-				
+
 					m_liftHinge->setLimit(-M_PI/16.0f, M_PI/8.0f);
 					m_liftHinge->enableAngularMotor(true, -0.1, maxMotorImpulse);
 					break;
 				}
-			case GLUT_KEY_RIGHT : 
+			case GLUT_KEY_RIGHT :
 				{
-					
+
 					m_liftHinge->setLimit(-M_PI/16.0f, M_PI/8.0f);
 					m_liftHinge->enableAngularMotor(true, 0.1, maxMotorImpulse);
 					break;
@@ -995,9 +995,9 @@ void ForkLiftDemo::specialKeyboard(int key, int x, int y)
 
 	} else
 	{
-			switch (key) 
+			switch (key)
 			{
-			case GLUT_KEY_LEFT : 
+			case GLUT_KEY_LEFT :
 				{
 					gVehicleSteering += steeringIncrement;
 					if (	gVehicleSteering > steeringClamp)
@@ -1005,7 +1005,7 @@ void ForkLiftDemo::specialKeyboard(int key, int x, int y)
 
 					break;
 				}
-			case GLUT_KEY_RIGHT : 
+			case GLUT_KEY_RIGHT :
 				{
 					gVehicleSteering -= steeringIncrement;
 					if (	gVehicleSteering < -steeringClamp)
